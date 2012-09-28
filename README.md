@@ -1,4 +1,4 @@
-# jasmine-html-runner for NodeJS
+# jasmine-html-runner for Node.js
 
 It uses phantomjs to execute your html jasmine's spec runner and fetches the 
 results when the test ends, then it outputs in the console. It also uses httpd-mock 
