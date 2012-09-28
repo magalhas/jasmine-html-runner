@@ -32,8 +32,8 @@ A JSON file containing the following structure:
 
 By default it uses tests.html as your html jasmine's spec runner. It should be placed on the serverRootPath.
 
-node index -c <path-to-configuration-file>
+node index -c path-to-configuration-file
 
 You can override the html jasmine's spec runner filename or URI using -t option.
 
-node index -t <filename> -c <path-to-configuration-file>
+node index -t filename -c path-to-configuration-file
