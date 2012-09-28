@@ -42,6 +42,6 @@ node index -t filename -c path-to-configuration-file
 
 ## TODO
 
-\- Various standard output formats, for instance output a surefire report XML
+\- Various standard output formats, for instance output a surefire report XML<br />
 \- Settings to control max execution time of phantomjs as well as where to place
 output when not using console mode
