@@ -13,7 +13,7 @@
   "dependencies": {
     "phantom": "*",
     "commander": "1",
-    "httpd-mock": "0.2.1"
+    "httpd-mock": ">=0.2.2"
   },
   "keywords": [
     "phantom",

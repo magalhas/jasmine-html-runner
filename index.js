@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-var fs = require('fs'),
-    commander = require('commander'),
+var commander = require('commander'),
     phantom = require('phantom'),
-    httpdMock = require('httpd-mock');
+    HttpdMock = require('httpd-mock'),
+    httpdMock = new HttpdMock();
 
 if (!module.parent) {
     commander
