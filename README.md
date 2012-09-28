@@ -27,6 +27,8 @@ A JSON file containing the following structure:
 	}
 }
 ```
+The web service URI can contain variables, for instance, "client/:id" would be
+caught in a request to "client/123".
 
 ## Running
 
@@ -37,3 +39,9 @@ node index -c path-to-configuration-file
 You can override the html jasmine's spec runner filename or URI using -t option.
 
 node index -t filename -c path-to-configuration-file
+
+## TODO
+
+\- Various standard output formats, for instance output a surefire report XML
+\- Settings to control max execution time of phantomjs as well as where to place
+output when not using console mode
