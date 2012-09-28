@@ -1,0 +1,10 @@
+{
+    "serverRootPath": "./demo",
+    "servicesPrefix": "/api/",
+    "jsonMocksPath": "./demo/mocks/",
+    "webServices": {
+        "get": {
+            "result": "mockService.json"
+        }
+	}
+}
