@@ -2,7 +2,7 @@
 
 It uses phantomjs to execute your html jasmine's spec runner and fetches the 
 results when the test ends, then it outputs in the console. It also uses httpd-mock 
-to create a mock http server that maybe needed for the tests to run successfuly.
+to create a mock http server that may be needed for the tests to run successfuly.
 It supports webservices mock implementation through a configuration file.
 
 ## External dependencies
@@ -43,5 +43,5 @@ node index -t filename -c path-to-configuration-file
 ## TODO
 
 \- Various standard output formats, for instance output a surefire report XML<br />
-\- Settings to control max execution time of phantomjs as well as where to place
+\- Settings to control max execution time of phantomjs as well as where to placeg
 output when not using console mode
