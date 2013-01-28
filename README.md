@@ -15,6 +15,7 @@ A JSON file containing the following structure:
     "serverRootPath": ".",
     "servicesPrefix": '/webservice/',
     "jsonMocksPath": "./mocks/",
+    "outputFile": "TEST-Jasmine.xml",
     "webServices": {
         "get": {
             "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json",

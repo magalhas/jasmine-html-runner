@@ -1,7 +1,7 @@
 {
   "name": "jasmine-html-runner",
   "description": "Runs Jasmine's html runner using phantomjs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "José Magalhães",
     "email": "magalhas@gmail.com"
