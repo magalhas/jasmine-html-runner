@@ -6,9 +6,11 @@ to create a mock http server that may be needed for the tests to run successfuly
 It supports webservices mock implementation through a configuration file.
 
 ## External dependencies
-phantomjs v1.7.0
+phantomjs v1.8
 
-## Configuration file
+## Usage
+
+### Configuration file
 A JSON file containing the following structure:
 ```js
 {
@@ -16,7 +18,7 @@ A JSON file containing the following structure:
     "servicesPrefix": '/webservice/',
     "jsonMocksPath": "./mocks/",
     "outputFile": "TEST-Jasmine.xml",
-    "phantomjsLocation": "/usr/local/bin/phantomjs",
+    "phantomjsLocation": "/usr/local/bin/phantomjs" // overridable by command line argument --phantom-js-location,
     "webServices": {
         "get": {
             "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json",
@@ -44,6 +46,5 @@ node index -t filename -c path-to-configuration-file
 
 ## TODO
 
-\- Various standard output formats, for instance output a surefire report XML<br />
 \- Settings to control max execution time of phantomjs as well as where to placeg
 output when not using console mode

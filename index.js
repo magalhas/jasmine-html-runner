@@ -12,6 +12,7 @@ var jspackage = require("./package.json"),
 if (!module.parent) {
     commander
         .version(jspackage.version)
+        .option("--phantom-js-location <path>", "Path to the phantomjs binary")
         .option("-c, --config <path>", "Path to the configuration file")
         .option("-t, --test-html-file <filename>", "Uri of your Jasmine's html spec runner [tests.html]", String, "tests.html")
         .parse(process.argv);
@@ -22,6 +23,7 @@ if (!module.parent) {
         process.exit();
     }
     config = require(commander.config);
+    commander.phantomJsLocation && (config.phantomJsLocation = commander.phantomJsLocation);
     config.phantomjsLocation && (process.env.path += ";" + config.phantomjsLocation);
 
     httpdMock
