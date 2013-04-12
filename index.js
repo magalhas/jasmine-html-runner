@@ -44,36 +44,42 @@ if (!module.parent) {
         page.open("http://localhost:" + httpdMock.getPort() + "/" + commander.testHtmlFile, function (status) {
             if (!status) {
                 console.log("Jasmine's html runner failed to access the server");
-                proxy.end();
-                return process.exit();
-            }
-            console.log("Jasmine's runner client waiting for tests to finish...");
-            setInterval(function () {
-                if (evaluationTry >= 300) {
-                    console.log("Tests took too long to run. Stopping application.");
-                    proxy.end();
-                    return process.exit();
-                }
-                page.evaluate(function () {
-                    var element = document && document.querySelector && document.querySelector('.runner span .description');
-                    return (element && element.innerText) || '';
-                }, function (result) {
-                    if (result && result.length > 0) {
-                        console.log(result);
-                        if (config.outputFile && jUnitXMLOutput.length) {
-                            jUnitXMLOutput = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuites>" + jUnitXMLOutput + "\n</testsuites>";
-                            var fd = fs.openSync(config.outputFile, "w");
-                            fs.writeSync(fd, jUnitXMLOutput, 0);
-                            fs.closeSync(fd);
-                        } else if (!config.outputFile) {
-                            console.log("Results output file not specified. File not saved.");
-                        }
-                        proxy.end();
-                        return process.exit();
-                    }
+                proxy.end(function () {
+                    process.exit();
                 });
-                evaluationTry += 1;
-            }, 1000);
+            } else {
+                console.log("Jasmine's runner client waiting for tests to finish...");
+                setInterval(function () {
+                    if (evaluationTry >= 300) {
+                        console.log("Tests took too long to run. Stopping application.");
+                        proxy.end(function () {
+                            process.exit();
+                        });
+                    } else {
+                        page.evaluate(function () {
+                            var element = document && document.querySelector
+                                && document.querySelector('.runner span .description');
+                            return (element && element.innerText) || '';
+                        }, function (result) {
+                            if (result && result.length > 0) {
+                                console.log(result);
+                                if (config.outputFile && jUnitXMLOutput.length) {
+                                    jUnitXMLOutput = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuites>" + jUnitXMLOutput + "\n</testsuites>";
+                                    var fd = fs.openSync(config.outputFile, "w");
+                                    fs.writeSync(fd, jUnitXMLOutput, 0);
+                                    fs.closeSync(fd);
+                                } else if (!config.outputFile) {
+                                    console.log("Results output file not specified. File not saved.");
+                                }
+                                proxy.end(function () {
+                                    process.exit();
+                                });
+                            }
+                        });
+                        evaluationTry += 1;
+                    }
+                }, 1000);
+            }
         });
     });
 }
