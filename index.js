@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-"use strict";
-
 var jspackage = require("./package.json"),
     commander = require("commander"),
     fs = require("fs"),
@@ -37,7 +35,7 @@ if (!module.parent) {
         var page = proxy.page,
             jUnitXMLOutput = "",
             evaluationTry = 0;
-        page.set("onConsoleMessage", function (msg) {
+        page.on("consoleMessage", function (msg) {
             if (msg.indexOf("<<jUnit") === 0) {
                 jUnitXMLOutput += msg.substr(7);
             }
@@ -62,7 +60,7 @@ if (!module.parent) {
                 }, function (result) {
                     if (result && result.length > 0) {
                         console.log(result);
-                        if (config.outputFile && jUnitXMLOutput.length > 0) {
+                        if (config.outputFile && jUnitXMLOutput.length) {
                             jUnitXMLOutput = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuites>" + jUnitXMLOutput + "\n</testsuites>";
                             var fd = fs.openSync(config.outputFile, "w");
                             fs.writeSync(fd, jUnitXMLOutput, 0);
