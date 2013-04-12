@@ -2,6 +2,7 @@
 var jspackage = require("./package.json"),
     commander = require("commander"),
     fs = require("fs"),
+    path = require("path"),
     phantom = require("phantom-proxy"),
     HttpdMock = require("httpd-mock"),
     httpdMock = new HttpdMock(),
@@ -11,7 +12,7 @@ if (!module.parent) {
     commander
         .version(jspackage.version)
         .option("--phantom-js-location <path>", "Path to the phantomjs binary")
-        .option("-c, --config <path>", "Path to the configuration file")
+        .option("-c, --config <path>", "Path to the configuration file relative to jasmine-html-runner")
         .option("-t, --test-html-file <filename>", "Uri of your Jasmine's html spec runner [tests.html]", String, "tests.html")
         .parse(process.argv);
 
@@ -20,12 +21,12 @@ if (!module.parent) {
         commander.outputHelp();
         process.exit();
     }
-    config = require(commander.config);
+    config = require(path.resolve(__dirname, commander.config));
     commander.phantomJsLocation && (config.phantomJsLocation = commander.phantomJsLocation);
-    config.phantomjsLocation && (process.env.path += ";" + config.phantomjsLocation);
+    config.phantomJsLocation && (process.env.path += ";" + path.resolve(__dirname, config.phantomJsLocation));
 
     httpdMock
-        .setConfigFile(commander.config)
+        .setConfigFile(path.resolve(__dirname, commander.config))
         .setServerRootPath()
         .createWebServices()
         .start();
