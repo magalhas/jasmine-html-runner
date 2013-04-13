@@ -20,7 +20,9 @@
     "phantom",
     "bdd",
     "tdd",
-    "testing"
+    "testing",
+    "jasmine",
+    "headless"
   ],
   "bin": "./bin/jasmine-html-runner.js",
   "main": "index",
