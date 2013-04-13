@@ -1,5 +1,4 @@
 # jasmine-html-runner for Node.js
-
 It uses phantomjs to execute your Jasmine's HTML spec runner and fetches the 
 results when the test ends, outputting it on the console and on a jUnit XML.
 
@@ -14,16 +13,18 @@ object.
 phantomjs v1.9 (should work with v1.8)
 
 ## Usage
-
 ### Configuration file
 A JSON file containing the following structure:
 ```js
 {
-    "serverRootPath": ".", // default
-    "servicesPrefix": "/webservice/", // default, optional
     "jsonMocksPath": "./mocks/", // default, optional
     "outputFile": "./TEST-Jasmine.xml", // default, blank to bypass file output
-    "phantomJsLocation": "/usr/local/bin/phantomjs", // only needed if not available in env path. overridable by command line argument --phantom-js-location
+    "phantomJsLocation": "/usr/local/bin/phantomjs", // only needed if not available in env path. overridable by command line arg --phantom-js-location
+    "quiet": false, // default, if true it won't ouput anything to the console
+    "serverRootPath": ".", // default
+    "servicesPrefix": "/webservice/", // default, optional
+    "testHtmlFile": "tests.html", // default, overridable by command line arg -t
+    "timeout": 300000, // default, miliseconds until execution stops if tests didn't end
     "webServices": { // optional
         "get": {
             "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json",
@@ -62,22 +63,42 @@ jasmine.getEnv().addReporter(new jasmine.JUnitXmlReporter());
 ```
 
 ## Running
+### As a binary
+```console
+Usage: jasmine-html-runner.js -c <path> [options]
 
-By default it uses tests.html as your html jasmine's spec runner. It should be placed on the serverRootPath.
+Options:
 
-jasmine-html-runner -c path-to-configuration-file
+    -h, --help                       output usage information
+    -V, --version                    output the version number
+    --phantom-js-location [path]     Path to the phantomjs binary
+    -c, --config <path>              Path to the configuration file relative to jasmine-html-runner
+    -t, --test-html-file [filename]  Uri of your Jasmine's html spec runner [tests.html]
+```
 
-You can override the html jasmine's spec runner filename or URI using -t option.
-
-jasmine-html-runner -t filename -c path-to-configuration-file
+### As a module
+Here's a small example:
+```js
+var JasmineHtmlRunner = require("jasmine-html-runner");
+jasmineHtmlRunner = new JasmineHtmlRunner({
+    configFile: "jasmine-html-runner.json",
+    onFinish: function () {
+        process.exit();
+    }
+});
+jasmineHtmlRunner.start();
+```
+The object received in the constructor can contain any variable available inside
+the config file. The reason the configFile is mandatory is because of
+[httpd-mock](https://github.com/magalhas/httpd-mock) limitation for the time
+being.
 
 ## TODO
-
-\- Create the jUnit XML by crawling the DOM using phantom instead of relying on
+* Create the jUnit XML by crawling the DOM using phantom instead of relying on
 a reporter.
-\- Fix and improve the demo.
+* Fix and improve the demo.
 
-## Aknowledgment
+## Acknowledgment
 The jUnit XML Reporter was retrieved and changed from larrymyers project
 [jasmine-reporters](https://github.com/larrymyers/jasmine-reporters) in order
 to output the XML content to the console (and then intercepted by phantom).
