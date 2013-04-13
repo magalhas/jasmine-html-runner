@@ -6,7 +6,7 @@ to create a mock http server that may be needed for the tests to run successfuly
 It supports webservices mock implementation through a configuration file.
 
 ## External dependencies
-phantomjs v1.8
+phantomjs v1.9
 
 ## Usage
 
@@ -38,13 +38,12 @@ caught in a request to "client/123".
 
 By default it uses tests.html as your html jasmine's spec runner. It should be placed on the serverRootPath.
 
-node index -c path-to-configuration-file
+jasmine-html-runner -c path-to-configuration-file
 
 You can override the html jasmine's spec runner filename or URI using -t option.
 
-node index -t filename -c path-to-configuration-file
+jasmine-html-runner -t filename -c path-to-configuration-file
 
 ## TODO
 
-\- Settings to control max execution time of phantomjs as well as where to placeg
-output when not using console mode
+\- Map URL wildcards to pointed files.
