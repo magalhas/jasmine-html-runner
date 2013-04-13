@@ -22,7 +22,10 @@
     "tdd",
     "testing",
     "jasmine",
-    "headless"
+    "headless",
+    "mock",
+    "requirejs",
+    "httpd"
   ],
   "bin": "./bin/jasmine-html-runner.js",
   "main": "index",
