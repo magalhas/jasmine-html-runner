@@ -41,7 +41,7 @@ The web service URI can contain variables, for instance, "client/:id" would be
 caught in a request to "client/123".
 
 ### Configuring your spec runner
-No changes are need to your Jasmine's HTML spec runner, though if you want to
+No changes are needed to your Jasmine's HTML spec runner, though if you want to
 have jUnit output you should include the following in your html head:
 
 ```html
