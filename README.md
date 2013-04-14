@@ -80,7 +80,7 @@ Options:
 Here's a small example:
 ```js
 var JasmineHtmlRunner = require("jasmine-html-runner");
-jasmineHtmlRunner = new JasmineHtmlRunner({
+var jasmineHtmlRunner = new JasmineHtmlRunner({
     configFile: "jasmine-html-runner.json",
     onFinish: function () {
         process.exit();
