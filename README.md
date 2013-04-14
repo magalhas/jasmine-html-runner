@@ -96,6 +96,7 @@ being.
 ## TODO
 * Create the jUnit XML by crawling the DOM using phantom instead of relying on
 a reporter.
+* Allow e-mail output.
 * Fix and improve the demo.
 
 ## Acknowledgment
