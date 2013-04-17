@@ -1,7 +1,7 @@
 {
   "name": "jasmine-html-runner",
   "description": "Runs Jasmine's HTML Runner using phantomjs.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": {
     "name": "José Magalhães",
     "email": "magalhas@gmail.com"
@@ -14,6 +14,7 @@
     "lodash": "*",
     "phantom-proxy": "*",
     "commander": "1",
+    "fs-extra": "*",
     "httpd-mock": ">=0.2.8"
   },
   "keywords": [
