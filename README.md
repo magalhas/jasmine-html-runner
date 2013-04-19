@@ -26,13 +26,13 @@ A JSON file containing the following structure:
     "testHtmlFile": "tests.html", // default, overridable by command line arg -t
     "timeout": 300000, // default, miliseconds until execution stops if tests didn't end
     "webServices": { // optional
-        "get": {
-            "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json",
-            "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json"
-        },
-    	"post": {
-			"YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json",
-            "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json"
+      "get": {
+        "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json",
+        "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json"
+      },
+      "post": {
+        "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json",
+        "YOUR_WEBSERVICE_URI": "WEBSERVICE_JSON_RESULT_FILE.json"
 		}
 	}
 }
@@ -46,11 +46,11 @@ have jUnit output you should include the following in your html head:
 
 ```html
 <head>
-    <!-- ... -->
-  	<script src="jasmine.js"></script>
-  	<script src="jasmine-html.js"></script>
+  <!-- ... -->
+	<script src="jasmine.js"></script>
+	<script src="jasmine-html.js"></script>
 	<script src="jasmine-junit.js"></script>
-    <!-- ... -->
+  <!-- ... -->
 </head>
 ```
 Remember to set your src paths correctly. You may find a copy of jasmine-junit
