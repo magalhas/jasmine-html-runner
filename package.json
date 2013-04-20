@@ -13,7 +13,7 @@
   "dependencies": {
     "lodash": "*",
     "phantom-proxy": "*",
-    "commander": "1",
+    "commander": "*",
     "fs-extra": "*",
     "httpd-mock": ">=0.2.8"
   },

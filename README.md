@@ -93,6 +93,10 @@ the config file. The reason the configFile is mandatory is because of
 [httpd-mock](https://github.com/magalhas/httpd-mock) limitation for the time
 being.
 
+### As a Grunt task
+To run as a grunt task there's [grunt-jasmine-html-runner](https://github.com/magalhas/grunt-jasmine-html-runner)
+to do the job for you.
+
 ## TODO
 * Create the jUnit XML by crawling the DOM using phantom instead of relying on
 a reporter.
